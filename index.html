@@ -10,20 +10,31 @@
 <body>
     <script src="./script.js"></script>
 
-    <div class="search">
-        <input type="text" value="name">
+    <form class="search" >
+        <input type="text" name="searchname" id="searchname" placeholder="Enter your search">
         <input type="submit" value="Submit">
-    </div>
+    </form>
+    <p id="results"></p>
 
-    <div class="books"></div>
+    
+   <!-- Sidebar -->
+   <div class="sidenav">
+    <a href="#about">Home</a>
+    <a href="#services">About</a>
+    <a href="#clients">Add Book</a>
+    <a href="#contact"></a>
+  </div>
+
+    <div class="searchresults"></div>
+
+    <div class="books">
+        
+    </div>
 
     
     <form class="formcontainer">
         <input type="text" value="book_name" id="name">
-        <input type="text" value="book_name">
-        <input type="text" value="book_name">
-        <input type="text" value="book_name">
-        <input type="text" value="book_name">
+        <input type="text" value="book_name" id="comment">
         <input type="submit" value="Submit">
     </form>
    
