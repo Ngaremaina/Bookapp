@@ -1,28 +1,27 @@
 const fetchData = () => {
+    // addBook()
     return fetch("http://localhost:3000/books")
     .then(res => res.json())
     .then(data => {
         listBooks(data)
-        // inputData(data)
-        getInputData(data)
-
+        getSearchData(data)
     })
+    
 }
 
 
-const getInputData = (value) => {
-    let form = document.querySelector(".search")
+const getSearchData = (value) => {
+    let form = document.querySelector("#search")
     form.addEventListener("submit", (event) => {
         event.preventDefault()
         let searchname = document.querySelector("#searchname").value
+        let parentContainer = document.querySelector(".searchresults")
         let arr = Object.entries(value)
         arr.filter(element => {
-          
             if (element[1].title.toLowerCase().includes(searchname)){
                 console.log(element[1].title)
                 let result = element[1]
-               
-                let parentContainer = document.querySelector(".searchresults")
+        
                 let card  = document.createElement("div")
                 let container = document.createElement("div")
                 let buttons = document.createElement("div")
@@ -68,9 +67,53 @@ const getInputData = (value) => {
                 // })
             }
         })
+        // let errormessage = document.createElement("li");
+        // // errormessage.innerText = `Cannot get the book containing the word ${searchname}`
+        // // parentContainer.appendChild(errormessage)
+        // errormessage.innerHTML = `
+        // <p>Cannot get the book containing the word ${searchname}</p>`
+        // parentContainer.appendChild(errormessage)
         
     })
 }
+
+let bookForm = document.getElementById("bookForm");
+console.log(bookForm)
+bookForm.addEventListener("submit", (event) => {
+    event.preventDefault()
+
+    let isbn = document.getElementById("isbn").value
+    let title = document.getElementById("title").value
+    let subtitle = document.getElementById("subtitle").value
+    let author = document.getElementById("author").value
+    let published = document.getElementById("published").value
+    let publisher = document.getElementById("publisher").value
+    let pages = document.getElementById("pages").value
+    let description = document.getElementById("description").value
+    let cover = document.getElementById("cover").value
+
+    console.log(isbn,title,subtitle,author,published,publisher,pages,description,cover)
+
+    fetch("http://localhost:3000/books/",{
+        method: "POST",
+        headers: {
+            "Content-Type":"application/json",
+            "Accept":"application/json"
+        },
+        body:JSON.stringify({
+            isbn:isbn,
+            title:title,
+            subtitle:subtitle,
+            author:author,
+            published:published,
+            publisher:publisher,
+            pages:pages,
+            description:description,
+            cover:cover
+        })
+    })
+})
+
 
 const listBooks = (value)=> {
     value.forEach(element => {
@@ -126,34 +169,6 @@ const createElements = (value) => {
     })
 }
 
-const inputData = (value) => {
-    let form = document.querySelector("form")
-    form.addEventListener("submit", (event) => {
-        event.preventDefault()
-        let title = document.querySelector("#name").value
-        let author = document.querySelector("#comment").value
-        let website = document.querySelector("#website").value
-        let description = document.querySelector("#description").value
-        let publisher = document.querySelector("#publisher").value
-        
-        let id = value.id
-        console.log(title)
-        addBook({title},{author}, {website},{description},{publisher})
-    })
-}
-
-const addBook = () => {
-    let options = {
-        method: "POST",
-        headers: {
-            "Content-Type":"application/json",
-            "Accept":"application/json"
-        },
-        body:JSON.stringify(title,author,website,description,publisher)
-    }
-    fetch(`http://localhost:3000/books/`,options)
-}
-
 const deleteBook = (id) => {
     const options = {
         method: "DELETE",
@@ -167,5 +182,5 @@ const deleteBook = (id) => {
     .then(res => res.json)
 }
 
-
 document.addEventListener('DOMContentLoaded', fetchData)
+

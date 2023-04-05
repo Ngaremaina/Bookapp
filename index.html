@@ -5,39 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Book Application</title>
 </head>
+
 <body>
+    <div class="topnav">
+        <a class="active" href="#home">Home</a>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+        <div class="topnav-right">
+            <form class="search" id="search">
+                <input type="text" name="searchname" id="searchname" placeholder="Enter the Book Title">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>  
+      </div>
+
+      <div class="bookscontainer">
+
+        <div class="searchresults"></div>
+
+        <div class="books"></div>
+
+      </div>
+
+    <form action="" id="bookForm" class="formcontainer">
+        <h1>Add Book</h1>
+        <input type="text" id="isbn" class="form-control" placeholder="Enter the ISBN...">
+        <input type="text" id="title" class="form-control" placeholder="Enter the Book Title...">
+        <input type="text" id="subtitle" class="form-control" placeholder="Enter the Book Subtitle...">
+        <input type="text" id="author" class="form-control" placeholder="Enter the Book Author...">
+        <input type="text" id="published" class="form-control" placeholder="Enter the Published Book Date...">
+        <input type="text" id="publisher" class="form-control" placeholder="Enter the Book Publisher...">
+        <input type="text" id="pages" class="form-control" placeholder="Enter the Book Pages...">
+        <input type="text" id="description" class="form-control" placeholder="Enter the Book Description..">
+        <input type="text" id="cover" class="form-control" placeholder="Enter the Book Image Link...">
+        <button type="submit">Submit</button>
+      </form>
     <script src="./script.js"></script>
-
-    <form class="search" >
-        <input type="text" name="searchname" id="searchname" placeholder="Enter your search">
-        <input type="submit" value="Submit">
-    </form>
-    <p id="results"></p>
-
-    
-   <!-- Sidebar -->
-   <div class="sidenav">
-    <a href="#about">Home</a>
-    <a href="#services">About</a>
-    <a href="#clients">Add Book</a>
-    <a href="#contact"></a>
-  </div>
-
-    <div class="searchresults"></div>
-
-    <div class="books">
-        
-    </div>
-
-    
-    <form class="formcontainer">
-        <input type="text" value="book_name" id="name">
-        <input type="text" value="book_name" id="comment">
-        <input type="submit" value="Submit">
-    </form>
-   
     
 </body>
 </html>
