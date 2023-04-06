@@ -238,6 +238,10 @@ li{
 
 }
 
+details{
+  cursor: pointer;
+}
+
 .formcontainer h1{
   text-align: center;
 }
