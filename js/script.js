@@ -1,31 +1,49 @@
+//Fetching data from json server
 const fetchData = () => {
     return fetch("http://localhost:3000/books")
     .then(res => res.json())
     .then(data => {
+        //Declaring our functions that will be fetching data from json server
         listBooks(data)
         getSearchData(data)
     })
     
 }
 
+//Searching data from the json server
 const getSearchData = (value) => {
     let form = document.querySelector("#search")
     form.addEventListener("submit", (event) => {
         event.preventDefault()
+
+        //Getting our value from the user 
         let searchname = document.querySelector("#searchname").value
+
+        //Quering the HTML elements from the index file
         let parentContainer = document.querySelector(".searchresults")
         let titleContainer = document.querySelector(".resultstitle")
+
+        //Creating the paragraph HTML element dynamically
         let text = document.createElement("p")
         text.innerText = "Search Results"
+
+        //Appending the element in our HTML
         titleContainer.appendChild(text)
         
+        //Converting our json data from an object to an array
         let arr = Object.entries(value)
 
+        //Filtering our data using the filter function
         arr.filter(element => {
+
+            //Comparing our book titles from the data with the book title given by the user
             if (element[1].title.toLowerCase().includes(searchname)){
+
+                //Once successful, we can see our results from console
                 console.log(element[1].title)
                 let result = element[1]
                 
+                 //Creating the HTML elements dynamically
                 let card  = document.createElement("div")
                 let container = document.createElement("div")
                 let buttons = document.createElement("div")
@@ -51,22 +69,28 @@ const getSearchData = (value) => {
                 let showbook = document.createElement("a")
                 let deletebook = document.createElement("button")
                 let editbook = document.createElement("button")
-            
+                
+                //Setting attributes to the buttons
                 buybook.setAttribute("id","buybook")
                 deletebook.setAttribute("id","deletebook")
             
+                //Assigning the data values to the respective HTML elements
                 title.innerText = result.title
                 cover.src = result.cover
                 price.innerText = `Price: Kshs. ${result.price}`
                 description.innerText = result.description
                 author.innerText = `by ${result.author}`
-                let diff = parseInt(result.quantity) - parseInt(result.sold)
-                availableBooks.innerText = `Available copies: ${diff}`
                 summary.innerText = "Description"
                 pages.innerText = `Pages: ${result.pages}`
                 published.innerText = `Publish Date: ${result.published}`
                 publisher.innerText = `Publisher: ${result.publisher}`
-            
+
+                //Calculating the available copies of the books and displaying to the user
+                let diff = parseInt(result.quantity) - parseInt(result.sold)
+                availableBooks.innerText = `Available copies: ${diff}`
+                
+                
+                //Comparing the 
                 if (diff <= 0){
                     buybook.innerText = "Sold Out"
                     buybook.disabled = true      
