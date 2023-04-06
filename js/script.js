@@ -41,13 +41,15 @@ const getSearchData = (value) => {
 
                 //Once successful, we can see our results from console
                 console.log(element[1].title)
+                //Assigning the variable result to our filtered data
                 let result = element[1]
                 
                  //Creating the HTML elements dynamically
                 let card  = document.createElement("div")
                 let container = document.createElement("div")
                 let buttons = document.createElement("div")
-            
+
+                //Setting attributes to the elements
                 card.setAttribute("class", "card")
                 container.setAttribute("class", "container")
                 buttons.setAttribute("class", "buttons")
@@ -63,16 +65,20 @@ const getSearchData = (value) => {
                 let pages = document.createElement("p")
                 let published = document.createElement("p")
                 let publisher = document.createElement("p")
-            
-            
+                let detailsComment = document.createElement("details")
+                let summaryComment = document.createElement("summary")
+                let name = document.createElement("p")
+                let comments = document.createElement("p")
                 let buybook = document.createElement("button")
                 let showbook = document.createElement("a")
                 let deletebook = document.createElement("button")
                 let editbook = document.createElement("button")
+                let commentbutton = document.createElement("button")
                 
                 //Setting attributes to the buttons
                 buybook.setAttribute("id","buybook")
                 deletebook.setAttribute("id","deletebook")
+                commentbutton.setAttribute("id","commentbutton")
             
                 //Assigning the data values to the respective HTML elements
                 title.innerText = result.title
@@ -84,13 +90,18 @@ const getSearchData = (value) => {
                 pages.innerText = `Pages: ${result.pages}`
                 published.innerText = `Publish Date: ${result.published}`
                 publisher.innerText = `Publisher: ${result.publisher}`
+                showbook.innerText = "Show More..."
+                deletebook.innerHTML = "<i class=\"fa fa-trash\" aria-hidden=\"true\"></i>"
+                editbook.innerHTML = "<i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>"
+                commentbutton.innerHTML = "<i class=\"fa fa-comments\" aria-hidden=\"true\"></i>"
+                summaryComment.innerText = "Comments"
 
                 //Calculating the available copies of the books and displaying to the user
                 let diff = parseInt(result.quantity) - parseInt(result.sold)
                 availableBooks.innerText = `Available copies: ${diff}`
                 
                 
-                //Comparing the 
+                //Comparing the books available are less or equal to 0
                 if (diff <= 0){
                     buybook.innerText = "Sold Out"
                     buybook.disabled = true      
@@ -99,26 +110,20 @@ const getSearchData = (value) => {
                     buybook.innerText = "Buy Book"
                 }
             
-                showbook.innerText = "Show More..."
-                deletebook.innerHTML = "<i class=\"fa fa-trash\" aria-hidden=\"true\"></i>"
-                editbook.innerHTML = "<i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>"
-               
+                //Appending the HTML elements to the index file
                 card.appendChild(cover)
                 container.appendChild(title)
                 container.appendChild(price)
                 container.appendChild(availableBooks)
                 container.appendChild(showbook)
-            
-                
                 parentContainer.appendChild(card)
-                
                 card.append(container)
-                card.append(buttons)
-            
-                buttons.appendChild(buybook)
-                // buttons.appendChild(showbook)
-            
+                card.append(buybook)
+
+                //adding a click event listener to our show book link
                 showbook.addEventListener("click", () => {
+
+                    //appending all the details in the html file
                     container.appendChild(author)
                     container.appendChild(details)
                     details.appendChild(summary)
@@ -126,25 +131,34 @@ const getSearchData = (value) => {
                     container.appendChild(publisher)
                     container.appendChild(published)
                     container.appendChild(pages)
-                    // container.appendChild(description)
-                    container.appendChild(deletebook)
+                    container.appendChild(detailsComment)
+                    detailsComment.appendChild(summaryComment)
+                    detailsComment.appendChild(name)
+                    detailsComment.appendChild(comments)
+                    container.appendChild(buttons)
+                    buttons.appendChild(editbook)
+                    buttons.appendChild(commentbutton)
+                    buttons.appendChild(deletebook)   
                 
                 })
+                //adding a click event listener to our buy book button
                 buybook.addEventListener('click', () => {
                     value.sold ++
                     let sold = value.sold
                     let posId = value.id
-                    console.log(sold, posId)
-                    updateTicketNum(posId, {sold})      
+                    updateTicketNum(posId, {sold})  //updating ticket number    
                 })
-            
+                //adding a click event listener to our delete book button
                 deletebook.addEventListener("click", () => { 
                     let posId = value.id
-                    deleteBook(posId)
+                    deleteBook(posId)//deleting book
                 })
 
+                //adding a click event listener to our edit book button
                 editbook.addEventListener("click", () => {
-                    let posId = value.id
+                    let posId = value.id //getting the book id
+
+                    //Creating the HTML elements and appending to the card
                     let detailForm = document.createElement("details")
                     let formSummary = document.createElement("summary")
                     formSummary.innerText = "Update Book"
@@ -152,6 +166,7 @@ const getSearchData = (value) => {
                     detailForm.appendChild(formSummary)
                     let formContainer = document.createElement("div")
                     
+                    //Adding a form to our card that will capture the updated values
                     formContainer.innerHTML = `
                     <form id="updateBook" class="updateformbook"><br>
                     <label for="title">Book Title</label>
@@ -169,9 +184,13 @@ const getSearchData = (value) => {
                     <label for="cover">Book Cover</label>
                     <input type="text" id="cover" class="form-control" placeholder="Enter the Book Image Link...">
                     <button type="submit">Submit</button>
-                  </form>`
+                </form>`
+
+                //Adding a submit event listener that will update data
                     formContainer.addEventListener("submit", (event) =>{
                         event.preventDefault()
+
+                        //Fetching the values from user
                         let title = document.getElementById("title").value
                         let subtitle = document.getElementById("title").value
                         let author = document.getElementById("author").value
@@ -183,8 +202,8 @@ const getSearchData = (value) => {
                         let sold = parseInt(document.getElementById("sold").value)
                         let description = document.getElementById("description").value
                         let cover = document.getElementById("cover").value
-                        // console.log(fname, lname, posId)
-                         fetch(`http://localhost:3000/books/${posId}`,{
+                        //PUT function that will update the book by obtaining the id
+                        fetch(`http://localhost:3000/books/${posId}`,{
                             method:"PUT",
                             headers:{
                                 "Content-Type":"application/json"
@@ -202,23 +221,78 @@ const getSearchData = (value) => {
                                 description:description,
                                 cover:cover
                             })
-                    })
+                        })
                     })
                     detailForm.appendChild(formContainer)
+                    
                     return formContainer
-            
-                },{once : true})               
+
+                },{once : true})
+
+                //Adding a click listener for the comment button
+                commentbutton.addEventListener("click", () => {
+                    let posId = value.id//get id of book
+
+                    //Creating and appending the details and summary tag
+                    let detailForm = document.createElement("details")
+                    let formSummary = document.createElement("summary")
+                    formSummary.innerText = "Add Comment"
+                    container.appendChild(detailForm)
+                    detailForm.appendChild(formSummary)
+                    let formComment = document.createElement("div")
+                    
+                    //Creating our comment form
+                    formComment.innerHTML = `
+                    <form id="commentBook" class="updateformbook"><br>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" class="form-control" placeholder="Enter Your Name...">
+                    <label for="comment">Comment</label>
+                    <input type="text" id="comment" class="form-control" placeholder="Enter Your Comment...">
+                    <button type="submit">Submit</button>
+                    
+                </form>`
+
+                //adding a submit listener to our form
+                    formComment.addEventListener("submit", (event) =>{
+                        event.preventDefault()
+
+                        //Getting our values from the user
+                        let name = document.getElementById("name").value
+                        let comment = document.getElementById("comment").value
+                        
+                        //Updating our book through PATCH method
+                        fetch(`http://localhost:3000/books/${posId}`,{
+                            method:"PATCH",
+                            headers:{
+                                "Content-Type":"application/json"
+                            },
+                            body:JSON.stringify({
+                                name:name,
+                                comment:comment,
+                                
+                            })
+                    })
+                    })
+                    detailForm.appendChild(formComment)//appending our form to the index file
+                    return formComment
+                },{once : true})
+                
+                                        
+                            
             }
           
         })     
     })
 }
 
+//Getting the add book form
 let bookForm = document.getElementById("bookForm");
-console.log(bookForm)
+
+//Adding a submit event listener
 bookForm.addEventListener("submit", (event) => {
     event.preventDefault()
 
+    //Getting the values from user
     let title = document.getElementById("title").value
     let subtitle = document.getElementById("title").value
     let author = document.getElementById("author").value
@@ -231,8 +305,7 @@ bookForm.addEventListener("submit", (event) => {
     let description = document.getElementById("description").value
     let cover = document.getElementById("cover").value
 
-    // console.log(isbn,title,subtitle,author,published,publisher,pages,description,cover)
-
+    //Adding data to the server using POST Method
     fetch("http://localhost:3000/books/",{
         method: "POST",
         headers: {
@@ -255,23 +328,22 @@ bookForm.addEventListener("submit", (event) => {
     })
 })
 
+//Listing all the cards in the index file
 const listBooks = (value)=> {
     value.forEach(element => {
-        createElements(element)   
+        createElements(element)   //Creating the elements in the html
     });
 }
 
+//Creating the HTML elements
 const createElements = (value) => {
-   
+    //Querying the HTML containers
     let parentContainer = document.querySelector(".books")
     let card  = document.createElement("div")
     let container = document.createElement("div")
     let buttons = document.createElement("div")
 
-    card.setAttribute("class", "card")
-    container.setAttribute("class", "container")
-    buttons.setAttribute("class", "buttons")
-
+    //Creating HTML elements dynamically
     let title = document.createElement("p")
     let cover = document.createElement("img")
     let price = document.createElement("p")
@@ -285,29 +357,29 @@ const createElements = (value) => {
     let publisher = document.createElement("p")
     let detailsComment = document.createElement("details")
     let summaryComment = document.createElement("summary")
-    let commentSection = document.createElement("li")
     let name = document.createElement("p")
     let comments = document.createElement("p")
-
-
     let buybook = document.createElement("button")
     let showbook = document.createElement("a")   
     let deletebook = document.createElement("button")
     let editbook = document.createElement("button")
     let commentbutton = document.createElement("button")
 
+    //Setting attributes to the elements
+    card.setAttribute("class", "card")
+    container.setAttribute("class", "container")
+    buttons.setAttribute("class", "buttons")
     buybook.setAttribute("id","buybook")
     deletebook.setAttribute("id","deletebook")
     editbook.setAttribute("id", "editbook")
     commentbutton.setAttribute("id","commentbutton")
 
+    //Assigning values to the HTML elements
     title.innerText = value.title
     cover.src = value.cover
     price.innerText = `Price: Kshs. ${value.price}`
     description.innerText = value.description
     author.innerText = `by ${value.author}`
-    let diff = parseInt(value.quantity) - parseInt(value.sold)
-    availableBooks.innerText = `Available copies: ${diff}`
     summary.innerText = "Description"
     summaryComment.innerText = "Comments"
     pages.innerText = `Pages: ${value.pages}`
@@ -315,8 +387,16 @@ const createElements = (value) => {
     publisher.innerText = `Publisher: ${value.publisher}`
     name.innerText = value.name
     comments.innerText = value.comment
-    
+    showbook.innerText = "Show More..."
+    deletebook.innerHTML = "<i class=\"fa fa-trash\" aria-hidden=\"true\"></i>"
+    editbook.innerHTML = "<i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>"
+    commentbutton.innerHTML = "<i class=\"fa fa-comments\" aria-hidden=\"true\"></i>"
 
+     //Calculating the available copies of the books and displaying to the user
+    let diff = parseInt(value.quantity) - parseInt(value.sold)
+    availableBooks.innerText = `Available copies: ${diff}`
+
+    //Comparing the books available are less or equal to 0
     if (diff <= 0){
         buybook.innerText = "Sold Out"
         buybook.disabled = true      
@@ -324,25 +404,21 @@ const createElements = (value) => {
     else{
         buybook.innerText = "Buy Book"
     }
-
-    showbook.innerText = "Show More..."
-    deletebook.innerHTML = "<i class=\"fa fa-trash\" aria-hidden=\"true\"></i>"
-    editbook.innerHTML = "<i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>"
-    commentbutton.innerHTML = "<i class=\"fa fa-comments\" aria-hidden=\"true\"></i>"
-
+    
+    //Appending the HTML elements to the index file
     card.appendChild(cover)
     container.appendChild(title)
     container.appendChild(price)
     container.appendChild(availableBooks)
     container.appendChild(showbook)
-
-    
-
     parentContainer.appendChild(card)
     card.append(container)
     card.append(buybook)
 
+     //adding a click event listener to our show book link
     showbook.addEventListener("click", () => {
+
+        //appending all the details in the html file
         container.appendChild(author)
         container.appendChild(details)
         details.appendChild(summary)
@@ -350,34 +426,34 @@ const createElements = (value) => {
         container.appendChild(publisher)
         container.appendChild(published)
         container.appendChild(pages)
-        container.appendChild(buttons)
         container.appendChild(detailsComment)
         detailsComment.appendChild(summaryComment)
         detailsComment.appendChild(name)
         detailsComment.appendChild(comments)
+        container.appendChild(buttons)
         buttons.appendChild(editbook)
         buttons.appendChild(commentbutton)
         buttons.appendChild(deletebook)   
        
     })
-
+     //adding a click event listener to our buy book button
     buybook.addEventListener('click', () => {
         value.sold ++
         let sold = value.sold
         let posId = value.id
-        console.log(sold, posId)
-        updateTicketNum(posId, {sold})      
+        updateTicketNum(posId, {sold})  //updating ticket number    
     })
-
+    //adding a click event listener to our delete book button
     deletebook.addEventListener("click", () => { 
         let posId = value.id
-        deleteBook(posId)
+        deleteBook(posId)//deleting book
     })
 
-
-
+    //adding a click event listener to our edit book button
     editbook.addEventListener("click", () => {
-        let posId = value.id
+        let posId = value.id //getting the book id
+
+        //Creating the HTML elements and appending to the card
         let detailForm = document.createElement("details")
         let formSummary = document.createElement("summary")
         formSummary.innerText = "Update Book"
@@ -385,6 +461,7 @@ const createElements = (value) => {
         detailForm.appendChild(formSummary)
         let formContainer = document.createElement("div")
         
+        //Adding a form to our card that will capture the updated values
         formContainer.innerHTML = `
         <form id="updateBook" class="updateformbook"><br>
         <label for="title">Book Title</label>
@@ -403,8 +480,12 @@ const createElements = (value) => {
         <input type="text" id="cover" class="form-control" placeholder="Enter the Book Image Link...">
         <button type="submit">Submit</button>
       </form>`
+
+       //Adding a submit event listener that will update data
         formContainer.addEventListener("submit", (event) =>{
             event.preventDefault()
+
+            //Fetching the values from user
             let title = document.getElementById("title").value
             let subtitle = document.getElementById("title").value
             let author = document.getElementById("author").value
@@ -416,7 +497,7 @@ const createElements = (value) => {
             let sold = parseInt(document.getElementById("sold").value)
             let description = document.getElementById("description").value
             let cover = document.getElementById("cover").value
-            // console.log(fname, lname, posId)
+            //PUT function that will update the book by obtaining the id
              fetch(`http://localhost:3000/books/${posId}`,{
                 method:"PUT",
                 headers:{
@@ -443,16 +524,19 @@ const createElements = (value) => {
 
     },{once : true})
 
-
+    //Adding a click listener for the comment button
     commentbutton.addEventListener("click", () => {
-        let posId = value.id
+        let posId = value.id//get id of book
+
+        //Creating and appending the details and summary tag
         let detailForm = document.createElement("details")
         let formSummary = document.createElement("summary")
-        formSummary.innerText = "Update Book"
+        formSummary.innerText = "Add Comment"
         container.appendChild(detailForm)
         detailForm.appendChild(formSummary)
         let formComment = document.createElement("div")
         
+        //Creating our comment form
         formComment.innerHTML = `
         <form id="commentBook" class="updateformbook"><br>
         <label for="name">Name</label>
@@ -462,11 +546,16 @@ const createElements = (value) => {
         <button type="submit">Submit</button>
         
       </form>`
+
+      //adding a submit listener to our form
         formComment.addEventListener("submit", (event) =>{
             event.preventDefault()
+
+            //Getting our values from the user
             let name = document.getElementById("name").value
             let comment = document.getElementById("comment").value
             
+            //Updating our book through PATCH method
              fetch(`http://localhost:3000/books/${posId}`,{
                 method:"PATCH",
                 headers:{
@@ -479,12 +568,13 @@ const createElements = (value) => {
                 })
         })
         })
-        detailForm.appendChild(formComment)
+        detailForm.appendChild(formComment)//appending our form to the index file
         return formComment
     },{once : true})
     
 }
 
+//Defining the deleteBook function that will delete a book
 const deleteBook = (id) => {
     const options = {
         method: "DELETE",
@@ -498,6 +588,7 @@ const deleteBook = (id) => {
     .then(res => res.json)
 }
 
+//Defining the updateTicketNum function that will update the ticket number
 const updateTicketNum = (id, value) =>{
     const options = {
         method: "PATCH",
@@ -511,5 +602,6 @@ const updateTicketNum = (id, value) =>{
     .then(res => res.json)
 }
 
+//adding DOMContentLoaded listener and the fetchData function
 document.addEventListener('DOMContentLoaded', fetchData)
 

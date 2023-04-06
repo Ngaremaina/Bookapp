@@ -171,16 +171,31 @@ img{
 
 .container #deletebook{
   position: relative;
-  margin-left: 100px;
+  margin-left: 50px;
   margin-bottom: 10px;
   background-color: #333;
   color: white;
   font-size: 15px;
   cursor: pointer;
 }
+
+
 .container #deletebook:hover{
   background-color: red;
 }
+.container #commentbutton{
+  margin-left: 50px;
+  margin-bottom: 10px;
+  background-color: #333;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+
+}
+.container #commentbutton:hover {
+  background-color: purple;
+}
+
 .container #editbook{
   position: relative;
   margin-bottom: 10px;

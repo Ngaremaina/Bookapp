@@ -17,12 +17,12 @@ To run this application:
 *Run this command json-server --watch db.json-
 
 # To view the published HTML as a website #
-To visit this website, click on the link [here](https://github.com/Ngaremaina/bookapp) and ensure that the json server is running.
+To visit this website, click on the link [here](https://ngaremaina.github.io/bookapp/) and ensure that the json server is running.
 
 
 # Author #
 Owen Ngare
 
 # License #
-Apache License
+MIT License
 
