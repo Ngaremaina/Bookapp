@@ -240,6 +240,11 @@ li{
 
 details{
   cursor: pointer;
+  color: blue;
+}
+
+details:hover{
+  color: #00ccff;
 }
 
 .formcontainer h1{
