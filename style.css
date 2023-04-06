@@ -59,10 +59,21 @@ body{
   .books,.searchresults{
     display: flex;
     flex-wrap: wrap;
-    margin: 10px 10px 10px 40px;
-    justify-items: center;
-    
+    margin: 10px 10px 10px 40px;  
 }
+
+.resultstitle{
+  margin: 0;
+  font-size: 18px;
+  margin-left: 20px;
+}
+.searchresults .card{
+  margin-top: 5%;
+  margin-left: 0;
+}
+
+
+
 
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -102,8 +113,8 @@ img{
 
 
 .buttons{
-    position:relative;
-  
+    display: flex;
+    flex-direction: row;
 }
 .card button{
   padding: 10px;
@@ -111,10 +122,9 @@ img{
   justify-content: center;
   align-items: center;
   bottom: 0;
-
 }
 
-.buttons #buybook{
+.card #buybook{
   width: 100%;
   background-color: blue;
   bottom: 0;
@@ -122,7 +132,8 @@ img{
   color: white;
   font-size: 17px;
 }
-.buttons #buybook:hover{
+
+.card #buybook:hover{
   background-color: #00ccff;
 }
 
@@ -131,12 +142,14 @@ img{
   cursor: pointer;
   margin-bottom: 10px;
 }
+
 .container a:hover{
   color: #00ccff;
 }
 
 .container #deletebook{
-  margin-left: 170px;
+  position: relative;
+  margin-left: 120px;
   margin-bottom: 10px;
   background-color: #333;
   color: white;
@@ -145,6 +158,17 @@ img{
 }
 .container #deletebook:hover{
   background-color: red;
+}
+.container #editbook{
+  position: relative;
+  margin-bottom: 10px;
+  background-color: #333;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+.container #editbook:hover{
+  background-color: green;
 }
 
 .side-bar {
@@ -218,8 +242,7 @@ li{
 .comments button{
   padding: 12px;
   margin: 10px;
-  background-color: blue;
-
+  background-color: blue
 }
 
 
