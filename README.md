@@ -9,11 +9,16 @@ The pictures as shown depict the outlook of the web app
 ## Add Book ##
 ![Add Book](./media/AddBook.png)
 
-# Deployment #
-First you have to run the JSON server by running this command on your terminal:
-    json-server --watch db.json
+# Getting Started #
+To run this application:
 
-Then launch the application in a browser to begin using it.
+*Clone from here [Book App](https://github.com/Ngaremaina/bookapp)
+
+*Run this command json-server --watch db.json-
+
+# To view the published HTML as a website #
+To visit this website, click on the link [here](https://github.com/Ngaremaina/bookapp) and ensure that the json server is running.
+
 
 # Author #
 Owen Ngare
