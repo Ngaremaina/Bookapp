@@ -259,6 +259,11 @@ const createElements = (value) => {
     let pages = document.createElement("p")
     let published = document.createElement("p")
     let publisher = document.createElement("p")
+    let detailsComment = document.createElement("details")
+    let summaryComment = document.createElement("summary")
+    let commentSection = document.createElement("li")
+    let name = document.createElement("p")
+    let comments = document.createElement("p")
 
 
     let buybook = document.createElement("button")
@@ -280,9 +285,13 @@ const createElements = (value) => {
     let diff = parseInt(value.quantity) - parseInt(value.sold)
     availableBooks.innerText = `Available copies: ${diff}`
     summary.innerText = "Description"
+    summaryComment.innerText = "Comments"
     pages.innerText = `Pages: ${value.pages}`
     published.innerText = `Publish Date: ${value.published}`
     publisher.innerText = `Publisher: ${value.publisher}`
+    name.innerText = value.name
+    comments.innerText = value.comment
+    
 
     if (diff <= 0){
         buybook.innerText = "Sold Out"
@@ -295,7 +304,7 @@ const createElements = (value) => {
     showbook.innerText = "Show More..."
     deletebook.innerHTML = "<i class=\"fa fa-trash\" aria-hidden=\"true\"></i>"
     editbook.innerHTML = "<i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>"
-    commentbutton.innerHTML = "<i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>"
+    commentbutton.innerHTML = "<i class=\"fa fa-comments\" aria-hidden=\"true\"></i>"
 
     card.appendChild(cover)
     container.appendChild(title)
@@ -318,11 +327,14 @@ const createElements = (value) => {
         container.appendChild(published)
         container.appendChild(pages)
         container.appendChild(buttons)
+        container.appendChild(detailsComment)
+        detailsComment.appendChild(summaryComment)
+        detailsComment.appendChild(name)
+        detailsComment.appendChild(comments)
         buttons.appendChild(editbook)
         buttons.appendChild(commentbutton)
         buttons.appendChild(deletebook)   
-        
-    
+       
     })
 
     buybook.addEventListener('click', () => {
