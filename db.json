@@ -8,9 +8,11 @@
       "published": "May 28, 2002",
       "publisher": "Bantam Books",
       "pages": 704,
-      "sold": 12,
+      "sold": 14,
       "description": "Long ago, in a time forgotten, a preternatural event threw the seasons out of balance. In a land where summers can last decades and winters a lifetime, trouble is brewing. The cold is returning, and in the frozen wastes to the north of Winterfell, sinister and supernatural forces are massing beyond the kingdom’s protective Wall. At the center of the conflict lie the Starks of Winterfell, a family as harsh and unyielding as the land they were born to. Sweeping from a land of brutal cold to a distant summertime kingdom of epicurean plenty, here is a tale of lords and ladies, soldiers and sorcerers, assassins and bastards, who come together in a time of grim omens.  Here an enigmatic band of warriors bear swords of no human metal; a tribe of fierce wildlings carry men off into madness; a cruel young dragon prince barters his sister to win back his throne; and a determined woman undertakes the most treacherous of journeys. Amid plots and counterplots, tragedy and betrayal, victory and terror, the fate of the Starks, their allies, and their enemies hangs perilously in the balance, as each endeavors to win that deadliest of conflicts: the game of thrones.",
       "cover": "https://covers.openlibrary.org/b/id/11291394-L.jpg",
+      "comments": "",
+      "name": "",
       "id": 1
     },
     {
@@ -25,6 +27,8 @@
       "price": 950,
       "quantity": 25,
       "sold": 21,
+      "comments": "",
+      "name": "",
       "description": "Officer Francis, vigilante joker \"The Infamous Black Tongue,\" and ace thief Tesseract are forced by a cold-blooded Baba Yaga into an illegal fight ring as part of her effort to placate a vicious monster from another dimension.",
       "cover": "https://covers.openlibrary.org/b/id/13078761-L.jpg"
     },
@@ -40,6 +44,8 @@
       "price": 1000,
       "quantity": 24,
       "sold": 14,
+      "comments": "",
+      "name": "",
       "description": "The war against Voldemort is not going well: even Muggle governments are noticing. Ron scans the obituary pages of The Daily Prophet looking for familiar names. Dumbledore is absent from Hogwarts for long stretches of time, and the Order of the Phoenix has already suffered losses.",
       "cover": "https://covers.openlibrary.org/b/id/10716324-L.jpg"
     },
@@ -52,6 +58,8 @@
       "published": "2020",
       "publisher": "Bloomsbury Publishing",
       "pages": 640,
+      "comments": "",
+      "name": "",
       "price": 890,
       "quantity": 85,
       "sold": 55,
@@ -71,7 +79,9 @@
       "quantity": 25,
       "sold": 23,
       "description": "TThis book introduces Ann Soforth, Queen of Oogaboo, whom Tik-Tok, the clockwork man, assists in conquering the Nome King. Book 8 in L. Frank Baum's immortal OZ series, in which Betsy Bobbin and Hank the Mule are shipwrecked on the coast of Oz, meet up with the invading army of Queen Ann of Oogaboo, and help the Shaggy Man rescue his brother from the evil Nome King.",
-      "cover": "https://covers.openlibrary.org/b/id/2750960-L.jpg"
+      "cover": "https://covers.openlibrary.org/b/id/2750960-L.jpg",
+      "comments": "",
+      "name": ""
     },
     {
       "id": 6,
@@ -84,9 +94,12 @@
       "pages": 538,
       "price": 650,
       "quantity": 29,
+      "comments": "",
+      "name": "Panda",
       "sold": 24,
       "description": "Oliver Twist is a young orphan. His life in the workhouse is lonely and sad. Oliver becomes an apprentice for an undertaker but runs away after he gets into a fight with another apprentice. When Oliver arrives in London, he meets Jack, also known as the Artful Dodger, who offers him a place to stay.",
-      "cover": "https://covers.openlibrary.org/b/id/13469755-L.jpg"
+      "cover": "https://covers.openlibrary.org/b/id/13469755-L.jpg",
+      "comment": "Supp"
     },
     {
       "id": 7,
@@ -99,6 +112,8 @@
       "pages": 310,
       "price": 980,
       "quantity": 30,
+      "comments": "",
+      "name": "",
       "sold": 25,
       "description": "The story is about a young boy named Jim Hawkins who goes on a dangerous adventure to recover buried treasure. Along the way, he encounters mutinous pirates, marooned castaways, frightening tales of ghosts, and much more.",
       "cover": "https://covers.openlibrary.org/b/id/13295472-L.jpg"
@@ -115,6 +130,8 @@
       "price": 980,
       "quantity": 30,
       "sold": 28,
+      "comments": "",
+      "name": "",
       "description": "Greg records his sixth grade experiences in a middle school where he and his best friend, Rowley, undersized weaklings amid boys who need to shave twice daily, hope just to survive, but when Rowley grows more popular, Greg must take drastic measures to save their friendship.",
       "cover": "https://covers.openlibrary.org/b/id/13077490-L.jpg"
     },
@@ -129,6 +146,8 @@
       "pages": 181,
       "price": 980,
       "quantity": 30,
+      "comments": "",
+      "name": "",
       "sold": 10,
       "description": "The novel follows the life of Okonkwo, an Igbo (\"Ibo\" in the novel) man and local wrestling champion in the fictional Nigerian clan of Umuofia. The work is split into three parts, with the first describing his family, personal history, and the customs and society of the Igbo, and the second and third sections introducing the influence of European colonialism and Christian missionaries on Okonkwo, his family, and the wider Igbo community.",
       "cover": "https://covers.openlibrary.org/b/id/418592-L.jpg"
@@ -144,6 +163,8 @@
       "pages": 377,
       "price": 980,
       "quantity": 30,
+      "comments": "",
+      "name": "",
       "sold": 24,
       "description": "Twelve-year-old Percy Jackson is on the most dangerous quest of his life. With the help of a satyr and a daughter of Athena, Percy must journey across the United States to catch a thief who has stolen the original weapon of mass destruction—Zeus’ master bolt. Along the way, he must face a host of mythological enemies determined to stop him. Most of all, he must come to terms with a father he has never known, and an Oracle that has warned him of betrayal by a friend.",
       "cover": "https://covers.openlibrary.org/b/id/13011707-L.jpg"
@@ -158,6 +179,8 @@
       "publisher": "Scholastic Press",
       "pages": 374,
       "price": 980,
+      "comments": "",
+      "name": "",
       "quantity": 30,
       "sold": 28,
       "description": "In the ruins of a place once known as North America lies the nation of Panem, a shining Capitol surrounded by twelve outlying districts. The Capitol is harsh and cruel and keeps the districts in line by forcing them all to send one boy and one girl between the ages of twelve and eighteen to participate in the annual Hunger Games, a fight to the death on live TV. Sixteen-year-old Katniss Everdeen, who lives alone with her mother and younger sister, regards it as a death sentence when she steps forward to take her sister's place in the Games. But Katniss has been close to dead before—and survival, for her, is second nature. Without really meaning to, she becomes a contender. But if she is to win, she will have to start making choices that weight survival against humanity and life against love.",
@@ -174,6 +197,8 @@
       "pages": 751,
       "price": 980,
       "quantity": 30,
+      "comments": "",
+      "name": "",
       "sold": 26,
       "description": "Fourteen-year-old Harry Potter joins the Weasleys at the Quidditch World Cup, then enters his fourth year at Hogwarts Academy where he is mysteriously entered in an unusual contest that challenges his wizarding skills, friendships and character, amid signs that an old enemy is growing stronger.",
       "cover": "https://covers.openlibrary.org/b/id/12904448-L.jpg"
@@ -184,6 +209,8 @@
       "price": 600,
       "quantity": 12,
       "sold": 8,
+      "comments": "",
+      "name": "",
       "description": "As war surges in the dystopian society around her, sixteen-year-old Divergent Tris Prior must continue trying to save those she loves--and herself--while grappling with haunting questions of grief and forgiveness, identity and loyalty, politics and love",
       "cover": "https://covers.openlibrary.org/b/id/13326735-L.jpg",
       "id": 13

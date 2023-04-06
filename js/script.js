@@ -265,10 +265,12 @@ const createElements = (value) => {
     let showbook = document.createElement("a")   
     let deletebook = document.createElement("button")
     let editbook = document.createElement("button")
+    let commentbutton = document.createElement("button")
 
     buybook.setAttribute("id","buybook")
     deletebook.setAttribute("id","deletebook")
     editbook.setAttribute("id", "editbook")
+    commentbutton.setAttribute("id","commentbutton")
 
     title.innerText = value.title
     cover.src = value.cover
@@ -293,12 +295,14 @@ const createElements = (value) => {
     showbook.innerText = "Show More..."
     deletebook.innerHTML = "<i class=\"fa fa-trash\" aria-hidden=\"true\"></i>"
     editbook.innerHTML = "<i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>"
+    commentbutton.innerHTML = "<i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>"
 
     card.appendChild(cover)
     container.appendChild(title)
     container.appendChild(price)
     container.appendChild(availableBooks)
     container.appendChild(showbook)
+
     
 
     parentContainer.appendChild(card)
@@ -315,7 +319,9 @@ const createElements = (value) => {
         container.appendChild(pages)
         container.appendChild(buttons)
         buttons.appendChild(editbook)
+        buttons.appendChild(commentbutton)
         buttons.appendChild(deletebook)   
+        
     
     })
 
@@ -331,6 +337,8 @@ const createElements = (value) => {
         let posId = value.id
         deleteBook(posId)
     })
+
+
 
     editbook.addEventListener("click", () => {
         let posId = value.id
@@ -391,13 +399,53 @@ const createElements = (value) => {
                     description:description,
                     cover:cover
                 })
-        })
+            })
         })
         detailForm.appendChild(formContainer)
+        
         return formContainer
 
     },{once : true})
 
+
+    commentbutton.addEventListener("click", () => {
+        let posId = value.id
+        let detailForm = document.createElement("details")
+        let formSummary = document.createElement("summary")
+        formSummary.innerText = "Update Book"
+        container.appendChild(detailForm)
+        detailForm.appendChild(formSummary)
+        let formComment = document.createElement("div")
+        
+        formComment.innerHTML = `
+        <form id="commentBook" class="updateformbook"><br>
+        <label for="name">Name</label>
+        <input type="text" id="name" class="form-control" placeholder="Enter Your Name...">
+        <label for="comment">Comment</label>
+        <input type="text" id="comment" class="form-control" placeholder="Enter Your Comment...">
+        <button type="submit">Submit</button>
+        
+      </form>`
+        formComment.addEventListener("submit", (event) =>{
+            event.preventDefault()
+            let name = document.getElementById("name").value
+            let comment = document.getElementById("comment").value
+            
+             fetch(`http://localhost:3000/books/${posId}`,{
+                method:"PATCH",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify({
+                    name:name,
+                    comment:comment,
+                    
+                })
+        })
+        })
+        detailForm.appendChild(formComment)
+        return formComment
+    },{once : true})
     
 }
 

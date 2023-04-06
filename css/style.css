@@ -171,7 +171,7 @@ img{
 
 .container #deletebook{
   position: relative;
-  margin-left: 120px;
+  margin-left: 100px;
   margin-bottom: 10px;
   background-color: #333;
   color: white;
@@ -240,12 +240,9 @@ li{
 
 details{
   cursor: pointer;
-  color: blue;
+  
 }
 
-details:hover{
-  color: #00ccff;
-}
 
 .formcontainer h1{
   text-align: center;
