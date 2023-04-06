@@ -4,10 +4,10 @@ The Book App is a web application that shows the user a collection of books. The
 # Demo #
 The pictures as shown depict the outlook of the web app
 ## Home Page ##
-![Home Page](/media/Home Page.png)
+![Home Page](./media/Home Page.png)
 
 ## Add Book ##
-![Add Book](/media/Add Book.png)
+![Add Book](./media/Add Book.png)
 
 # Deployment #
 First you have to run the JSON server by running this command on your terminal:
