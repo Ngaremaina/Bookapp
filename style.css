@@ -46,7 +46,7 @@ body{
   }
   
   .topnav a.active {
-    background-color: #04AA6D;
+    background-color: blue;
     color: white;
   }
 
@@ -63,8 +63,6 @@ body{
     justify-items: center;
     
 }
-
-
 
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -86,27 +84,67 @@ body{
     padding: 2px 16px;
 } 
 
-
-
 img{
     width: 100%;
-    height: 280px; 
+    height: 300px; 
 }
 
 .formcontainer{
     display: flex;
     flex-direction: column;
     padding: 10px;
-    margin-left: 10%;
-    margin-right: 12px;
-}
+    margin: 10px 10px 10px 40px;
+    border: 2px solid #353636;
+    padding: 20px;
+    margin-top: 50px;
+    box-shadow: 0 4px 8px 0 rgba(39, 39, 39, 0.2);
+  }
 
 
 .buttons{
     position:relative;
-    margin: 2px;
-    margin-bottom: 1px;
-    bottom: 0; 
+  
+}
+.card button{
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+
+}
+
+.buttons #buybook{
+  width: 100%;
+  background-color: blue;
+  bottom: 0;
+  cursor: pointer;
+  color: white;
+  font-size: 17px;
+}
+.buttons #buybook:hover{
+  background-color: #00ccff;
+}
+
+.container a{
+  color: blue;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.container a:hover{
+  color: #00ccff;
+}
+
+.container #deletebook{
+  margin-left: 170px;
+  margin-bottom: 10px;
+  background-color: #333;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+.container #deletebook:hover{
+  background-color: red;
 }
 
 .side-bar {
@@ -121,20 +159,81 @@ img{
 }
 
 .side-bar p{
-text-align: center;
-font-size: 20px;
+  text-align: center;
+  font-size: 20px;
 }
 
 .side-bar a {
-padding: 6px 8px 6px 16px;
-text-decoration: none;
-font-size: 16px;
-color: #818181;
-display: block;
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #818181;
+  display: block;
 }
 
 .side-bar a:hover {
-color: #f1f1f1;
-cursor: pointer;
+  color: #f1f1f1;
+  cursor: pointer;
 }
+
+li{
+  list-style-type: none;
+}
+
+.formcontainer input{
+  padding: 8px;
+  margin: 10px;
+}
+
+.formcontainer button{
+  padding: 12px;
+  margin: 10px;
+  background-color: blue;
+
+}
+
+.formcontainer h1{
+  text-align: center;
+}
+.formcontainer button:hover{
+  background-color: #00ccff;
+}
+
+.comments{
+  display: flex;
+  flex-direction: column;
+  margin-left: 40px;
+  margin-right: 40x;
+  border: 2px solid #353636;
+  padding: 20px;
+  margin-top: 50px;
+  box-shadow: 0 4px 8px 0 rgba(39, 39, 39, 0.2);
+}
+
+.comments input{
+  padding: 8px;
+  margin: 10px;
+}
+
+.comments button{
+  padding: 12px;
+  margin: 10px;
+  background-color: blue;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -9,7 +9,6 @@ const fetchData = () => {
     
 }
 
-
 const getSearchData = (value) => {
     let form = document.querySelector("#search")
     form.addEventListener("submit", (event) => {
@@ -34,6 +33,7 @@ const getSearchData = (value) => {
                 let cover = document.createElement("img")
                 let author = document.createElement("p")
                 let category = document.createElement("p")
+                
             
                 let buybook = document.createElement("button")
                 let deletebook = document.createElement("button")
@@ -45,6 +45,9 @@ const getSearchData = (value) => {
             
                 buybook.innerText = "Show Details"
                 deletebook.innerText = "Delete Book"
+
+                buybook.setAttribute("id","buybook")
+                deletebook.setAttribute("id","deletebook")
             
                 card.appendChild(cover)
                 container.appendChild(title)
@@ -55,16 +58,25 @@ const getSearchData = (value) => {
             
                 buttons.appendChild(buybook)
                 buttons.appendChild(deletebook)
+
+                buybook.addEventListener('click', () => {
+                    value.sold ++
+                    let sold = value.sold
+                    let posId = value.id
+                    console.log(sold, posId)
+                    updateTicketNum(posId, {sold})      
+                })
             
-                // buybook.addEventListener("click", () => {
-                //     container.appendChild(author)
-                //     container.appendChild(category)
-                // })
+                deletebook.addEventListener("click", () => { 
+                    let posId = value.id
+                    deleteBook(posId)
+                })
             
-                // deletebook.addEventListener("click",() =>{
-                //     let posId = value.id
-                //     deleteBook(posId)
-                // })
+                
+            }
+            else{
+                
+
             }
         })
         // let errormessage = document.createElement("li");
@@ -82,17 +94,15 @@ console.log(bookForm)
 bookForm.addEventListener("submit", (event) => {
     event.preventDefault()
 
-    let isbn = document.getElementById("isbn").value
     let title = document.getElementById("title").value
-    let subtitle = document.getElementById("subtitle").value
     let author = document.getElementById("author").value
-    let published = document.getElementById("published").value
-    let publisher = document.getElementById("publisher").value
-    let pages = document.getElementById("pages").value
+    let price = parseInt(document.getElementById("price").value)
+    let quantity = parseInt(document.getElementById("quantity").value)
+    let sold = parseInt(document.getElementById("sold").value)
     let description = document.getElementById("description").value
     let cover = document.getElementById("cover").value
 
-    console.log(isbn,title,subtitle,author,published,publisher,pages,description,cover)
+    // console.log(isbn,title,subtitle,author,published,publisher,pages,description,cover)
 
     fetch("http://localhost:3000/books/",{
         method: "POST",
@@ -101,19 +111,16 @@ bookForm.addEventListener("submit", (event) => {
             "Accept":"application/json"
         },
         body:JSON.stringify({
-            isbn:isbn,
             title:title,
-            subtitle:subtitle,
             author:author,
-            published:published,
-            publisher:publisher,
-            pages:pages,
+            price:price,
+            quantity:quantity,
+            sold:sold,
             description:description,
             cover:cover
         })
     })
 })
-
 
 const listBooks = (value)=> {
     value.forEach(element => {
@@ -134,39 +141,86 @@ const createElements = (value) => {
 
     let title = document.createElement("p")
     let cover = document.createElement("img")
+    let price = document.createElement("p")
+    let description = document.createElement("p")
+    let availableBooks = document.createElement("p")
     let author = document.createElement("p")
-    let category = document.createElement("p")
+    let details = document.createElement("details")
+    let summary = document.createElement("summary")
+    let pages = document.createElement("p")
+    let published = document.createElement("p")
+    let publisher = document.createElement("p")
+
 
     let buybook = document.createElement("button")
+    let showbook = document.createElement("a")
     let deletebook = document.createElement("button")
+
+    buybook.setAttribute("id","buybook")
+    deletebook.setAttribute("id","deletebook")
 
     title.innerText = value.title
     cover.src = value.cover
-    author.innerText = `Authors: ${value.author}`
-    category.innerText = value.categories
+    price.innerText = `Price: Kshs. ${value.price}`
+    description.innerText = value.description
+    author.innerText = `by ${value.author}`
+    let diff = parseInt(value.quantity) - parseInt(value.sold)
+    availableBooks.innerText = `Available copies: ${diff}`
+    summary.innerText = "Description"
+    pages.innerText = `Pages: ${value.pages}`
+    published.innerText = `Publish Date: ${value.published}`
+    publisher.innerText = `Publisher: ${value.publisher}`
 
-    buybook.innerText = "Show Details"
-    deletebook.innerText = "Delete Book"
+    if (diff <= 0){
+        buybook.innerText = "Sold Out"
+        buybook.disabled = true      
+    }
+    else{
+        buybook.innerText = "Buy Book"
+    }
+
+    showbook.innerText = "Show More..."
+    deletebook.innerHTML = "<i class=\"fa fa-trash\" aria-hidden=\"true\"></i>"
 
     card.appendChild(cover)
     container.appendChild(title)
+    container.appendChild(price)
+    container.appendChild(availableBooks)
+    container.appendChild(showbook)
 
     parentContainer.appendChild(card)
     card.append(container)
     card.append(buttons)
 
     buttons.appendChild(buybook)
-    buttons.appendChild(deletebook)
+    // buttons.appendChild(showbook)
 
-    buybook.addEventListener("click", () => {
+    showbook.addEventListener("click", () => {
         container.appendChild(author)
-        container.appendChild(category)
+        container.appendChild(details)
+        details.appendChild(summary)
+        details.appendChild(description)
+        container.appendChild(publisher)
+        container.appendChild(published)
+        container.appendChild(pages)
+        // container.appendChild(description)
+        container.appendChild(deletebook)
+    
+    })
+    buybook.addEventListener('click', () => {
+        value.sold ++
+        let sold = value.sold
+        let posId = value.id
+        console.log(sold, posId)
+        updateTicketNum(posId, {sold})      
     })
 
-    deletebook.addEventListener("click",() =>{
+    deletebook.addEventListener("click", () => { 
         let posId = value.id
         deleteBook(posId)
     })
+
+    
 }
 
 const deleteBook = (id) => {
@@ -181,6 +235,19 @@ const deleteBook = (id) => {
     fetch(`http://localhost:3000/books/${id}`, options)
     .then(res => res.json)
 }
+const updateTicketNum = (id, value) =>{
+    const options = {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept":"application/json"
+        },
+        body:JSON.stringify(value)
+    }
+    fetch(`http://localhost:3000/books/${id}`, options)
+    .then(res => res.json)
+}
+
 
 document.addEventListener('DOMContentLoaded', fetchData)
 

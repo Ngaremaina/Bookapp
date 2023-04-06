@@ -11,13 +11,12 @@
 
 <body>
     <div class="topnav">
-        <a class="active" href="#home">Home</a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
+        <a href="#home">Book App</a>
+        <a href="#bookForm">Add Book</a>
+        <!-- <a href="#comments">Comments</a> -->
         <div class="topnav-right">
             <form class="search" id="search">
-                <input type="text" name="searchname" id="searchname" placeholder="Enter the Book Title">
+                <input type="text" name="searchname" id="searchname" placeholder="Search by the Book Title">
                 <button type="submit"><i class="fa fa-search"></i></button>
             </form>
         </div>  
@@ -27,24 +26,44 @@
 
         <div class="searchresults"></div>
 
-        <div class="books"></div>
+        <div class="books" id="home"></div>
 
       </div>
 
-    <form action="" id="bookForm" class="formcontainer">
+    <form id="bookForm" class="formcontainer">
         <h1>Add Book</h1>
-        <input type="text" id="isbn" class="form-control" placeholder="Enter the ISBN...">
+        <label for="title">Book Title</label>
         <input type="text" id="title" class="form-control" placeholder="Enter the Book Title...">
-        <input type="text" id="subtitle" class="form-control" placeholder="Enter the Book Subtitle...">
+        <label for="author">Book Author</label>
         <input type="text" id="author" class="form-control" placeholder="Enter the Book Author...">
-        <input type="text" id="published" class="form-control" placeholder="Enter the Published Book Date...">
-        <input type="text" id="publisher" class="form-control" placeholder="Enter the Book Publisher...">
-        <input type="text" id="pages" class="form-control" placeholder="Enter the Book Pages...">
+        <label for="price">Book Price</label>
+        <input type="number" id="price" class="form-control" placeholder="Enter the Book Price...">
+        <label for="quantity">Quantity</label>
+        <input type="number" id="quantity" class="form-control" placeholder="Enter the Number of Available Books to be Sold...">
+        <label for="sold">Books Sold</label>
+        <input type="number" id="sold" class="form-control" placeholder="Enter the Number of Books Sold...">
+        <label for="title">Book Description</label>
         <input type="text" id="description" class="form-control" placeholder="Enter the Book Description..">
+        <label for="cover">Book Cover</label>
         <input type="text" id="cover" class="form-control" placeholder="Enter the Book Image Link...">
         <button type="submit">Submit</button>
       </form>
+
+      <!-- <div id="id01" class="comments">
+        <h1>Add Comment</h1>
+        <label for="name">Name</label>
+        <input type="text" id="name" class="form-control" placeholder="Enter Your Name...">
+        <label for="comment">Comment</label>
+        <input type="text" id="comment" class="form-control" placeholder="Enter Your Comment...">
+        <button type="submit">Submit</button>
+      </div>
+      <div class="showcomments"></div> -->
+
+
+
     <script src="./script.js"></script>
+
+    
     
 </body>
 </html>
