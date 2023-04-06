@@ -1,5 +1,4 @@
 const fetchData = () => {
-    // addBook()
     return fetch("http://localhost:3000/books")
     .then(res => res.json())
     .then(data => {
@@ -51,6 +50,7 @@ const getSearchData = (value) => {
                 let buybook = document.createElement("button")
                 let showbook = document.createElement("a")
                 let deletebook = document.createElement("button")
+                let editbook = document.createElement("button")
             
                 buybook.setAttribute("id","buybook")
                 deletebook.setAttribute("id","deletebook")
@@ -77,8 +77,8 @@ const getSearchData = (value) => {
             
                 showbook.innerText = "Show More..."
                 deletebook.innerHTML = "<i class=\"fa fa-trash\" aria-hidden=\"true\"></i>"
-                
-
+                editbook.innerHTML = "<i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>"
+               
                 card.appendChild(cover)
                 container.appendChild(title)
                 container.appendChild(price)
@@ -118,22 +118,75 @@ const getSearchData = (value) => {
                     let posId = value.id
                     deleteBook(posId)
                 })
-            
-            
-                
-            }
-            else{
-                
 
+                editbook.addEventListener("click", () => {
+                    let posId = value.id
+                    let detailForm = document.createElement("details")
+                    let formSummary = document.createElement("summary")
+                    formSummary.innerText = "Update Book"
+                    container.appendChild(detailForm)
+                    detailForm.appendChild(formSummary)
+                    let formContainer = document.createElement("div")
+                    
+                    formContainer.innerHTML = `
+                    <form id="updateBook" class="updateformbook"><br>
+                    <label for="title">Book Title</label>
+                    <input type="text" id="title" class="form-control" placeholder="Enter the Book Title...">
+                    <label for="author">Book Author</label>
+                    <input type="text" id="author" class="form-control" placeholder="Enter the Book Author...">
+                    <label for="price">Book Price</label>
+                    <input type="number" id="price" class="form-control" placeholder="Enter the Book Price...">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" id="quantity" class="form-control" placeholder="Enter the Number of Available Books to be Sold...">
+                    <label for="sold">Books Sold</label>
+                    <input type="number" id="sold" class="form-control" placeholder="Enter the Number of Books Sold...">
+                    <label for="title">Book Description</label>
+                    <input type="text" id="description" class="form-control" placeholder="Enter the Book Description..">
+                    <label for="cover">Book Cover</label>
+                    <input type="text" id="cover" class="form-control" placeholder="Enter the Book Image Link...">
+                    <button type="submit">Submit</button>
+                  </form>`
+                    formContainer.addEventListener("submit", (event) =>{
+                        event.preventDefault()
+                        let title = document.getElementById("title").value
+                        let subtitle = document.getElementById("title").value
+                        let author = document.getElementById("author").value
+                        let published = document.getElementById("published").value
+                        let publisher = document.getElementById("publisher").value
+                        let pages = document.getElementById("pages").value
+                        let price = parseInt(document.getElementById("price").value)
+                        let quantity = parseInt(document.getElementById("quantity").value)
+                        let sold = parseInt(document.getElementById("sold").value)
+                        let description = document.getElementById("description").value
+                        let cover = document.getElementById("cover").value
+                        // console.log(fname, lname, posId)
+                         fetch(`http://localhost:3000/books/${posId}`,{
+                            method:"PUT",
+                            headers:{
+                                "Content-Type":"application/json"
+                            },
+                            body:JSON.stringify({
+                                title:title,
+                                subtitle:subtitle,
+                                author:author,
+                                published:published,
+                                publisher:publisher,
+                                pages:pages,
+                                price:price,
+                                quantity:quantity,
+                                sold:sold,
+                                description:description,
+                                cover:cover
+                            })
+                    })
+                    })
+                    detailForm.appendChild(formContainer)
+                    return formContainer
+            
+                },{once : true})               
             }
-        })
-        // let errormessage = document.createElement("li");
-        // // errormessage.innerText = `Cannot get the book containing the word ${searchname}`
-        // // parentContainer.appendChild(errormessage)
-        // errormessage.innerHTML = `
-        // <p>Cannot get the book containing the word ${searchname}</p>`
-        // parentContainer.appendChild(errormessage)
-        
+          
+        })     
     })
 }
 
@@ -143,7 +196,11 @@ bookForm.addEventListener("submit", (event) => {
     event.preventDefault()
 
     let title = document.getElementById("title").value
+    let subtitle = document.getElementById("title").value
     let author = document.getElementById("author").value
+    let published = document.getElementById("published").value
+    let publisher = document.getElementById("publisher").value
+    let pages = document.getElementById("pages").value
     let price = parseInt(document.getElementById("price").value)
     let quantity = parseInt(document.getElementById("quantity").value)
     let sold = parseInt(document.getElementById("sold").value)
@@ -160,7 +217,11 @@ bookForm.addEventListener("submit", (event) => {
         },
         body:JSON.stringify({
             title:title,
+            subtitle:subtitle,
             author:author,
+            published:published,
+            publisher:publisher,
+            pages:pages,
             price:price,
             quantity:quantity,
             sold:sold,
@@ -169,9 +230,6 @@ bookForm.addEventListener("submit", (event) => {
         })
     })
 })
-
-let updateForm = document.getElementById("updateBook")
-
 
 const listBooks = (value)=> {
     value.forEach(element => {
@@ -204,7 +262,7 @@ const createElements = (value) => {
 
 
     let buybook = document.createElement("button")
-    let showbook = document.createElement("a")
+    let showbook = document.createElement("a")   
     let deletebook = document.createElement("button")
     let editbook = document.createElement("button")
 
@@ -241,6 +299,7 @@ const createElements = (value) => {
     container.appendChild(price)
     container.appendChild(availableBooks)
     container.appendChild(showbook)
+    
 
     parentContainer.appendChild(card)
     card.append(container)
@@ -259,6 +318,7 @@ const createElements = (value) => {
         buttons.appendChild(deletebook)   
     
     })
+
     buybook.addEventListener('click', () => {
         value.sold ++
         let sold = value.sold
@@ -282,8 +342,7 @@ const createElements = (value) => {
         let formContainer = document.createElement("div")
         
         formContainer.innerHTML = `
-        <form id="updateBook" class="formcontainer" hidden>
-        <h1><i class="mdi mdi-update:"></i>Update Book</h1>
+        <form id="updateBook" class="updateformbook"><br>
         <label for="title">Book Title</label>
         <input type="text" id="title" class="form-control" placeholder="Enter the Book Title...">
         <label for="author">Book Author</label>
@@ -303,7 +362,11 @@ const createElements = (value) => {
         formContainer.addEventListener("submit", (event) =>{
             event.preventDefault()
             let title = document.getElementById("title").value
+            let subtitle = document.getElementById("title").value
             let author = document.getElementById("author").value
+            let published = document.getElementById("published").value
+            let publisher = document.getElementById("publisher").value
+            let pages = document.getElementById("pages").value
             let price = parseInt(document.getElementById("price").value)
             let quantity = parseInt(document.getElementById("quantity").value)
             let sold = parseInt(document.getElementById("sold").value)
@@ -317,7 +380,11 @@ const createElements = (value) => {
                 },
                 body:JSON.stringify({
                     title:title,
+                    subtitle:subtitle,
                     author:author,
+                    published:published,
+                    publisher:publisher,
+                    pages:pages,
                     price:price,
                     quantity:quantity,
                     sold:sold,
@@ -362,4 +429,3 @@ const updateTicketNum = (id, value) =>{
 
 document.addEventListener('DOMContentLoaded', fetchData)
 
-let form = document.createElement("input")

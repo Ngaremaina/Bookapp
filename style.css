@@ -72,8 +72,30 @@ body{
   margin-left: 0;
 }
 
+.updateformbook{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border: 2px solid #353636;
+    box-shadow: 0 4px 8px 0 rgba(39, 39, 39, 0.2);
+}
+.updateformbook input{
+  padding: 8px;
+  margin-bottom: 5px; 
+}
+.updateformbook button{
+  width: 100%;
+  background-color: #427646;
+  bottom: 0;
+  cursor: pointer;
+  color: white;
+  font-size: 17px;
+  margin-top: 5px;
 
-
+}
+.updateformbook button:hover{
+  background-color: green;
+}
 
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
