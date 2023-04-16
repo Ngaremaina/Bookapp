@@ -155,7 +155,7 @@ const createElements = (value) => {
     published.innerText = `Publish Date: ${value.published}`
     publisher.innerText = `Publisher: ${value.publisher}`
     name.innerText = value.name
-    comments.innerText = value.comment
+    comments.innerText = value.comments
     showbook.innerText = "Show More..."
     deletebook.innerHTML = "<i class=\"fa fa-trash\" aria-hidden=\"true\"></i>"
     editbook.innerHTML = "<i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>"
