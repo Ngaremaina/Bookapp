@@ -22,6 +22,13 @@ const getSearchData = (value) => {
 
         //Getting our value from the user 
         let searchname = document.querySelector("#searchname").value
+
+        // //Creating the paragraph HTML element dynamically
+        // let text = document.createElement("p")
+        // text.innerText = "Search Results"
+
+        // //Appending the element in our HTML
+        // resultContainer.appendChild(text)
         
         //Converting our json data from an object to an array
         let arr = Object.entries(value)
