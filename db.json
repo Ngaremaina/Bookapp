@@ -47,8 +47,7 @@
       "comments": "Fantastic book",
       "name": "Brian ",
       "description": "The war against Voldemort is not going well: even Muggle governments are noticing. Ron scans the obituary pages of The Daily Prophet looking for familiar names. Dumbledore is absent from Hogwarts for long stretches of time, and the Order of the Phoenix has already suffered losses.",
-      "cover": "https://covers.openlibrary.org/b/id/10716324-L.jpg",
-      "comment": "Good book"
+      "cover": "https://covers.openlibrary.org/b/id/10716324-L.jpg"
     },
     {
       "id": 4,
@@ -99,8 +98,7 @@
       "name": "Emmanuel",
       "sold": 24,
       "description": "Oliver Twist is a young orphan. His life in the workhouse is lonely and sad. Oliver becomes an apprentice for an undertaker but runs away after he gets into a fight with another apprentice. When Oliver arrives in London, he meets Jack, also known as the Artful Dodger, who offers him a place to stay.",
-      "cover": "https://covers.openlibrary.org/b/id/13469755-L.jpg",
-      "comment": "Supp"
+      "cover": "https://covers.openlibrary.org/b/id/13469755-L.jpg"
     },
     {
       "id": 7,
@@ -230,7 +228,7 @@
       "cover": "https://covers.openlibrary.org/b/id/13012124-L.jpg",
       "id": 14,
       "name": "Myner",
-      "comment": "Good book"
+      "comments": "Good book"
     },
     {
       "title": "The Cruel Prince",
@@ -242,6 +240,8 @@
       "price": 900,
       "quantity": 60,
       "sold": 42,
+      "name": "Maina",
+      "comments": "Nice book",
       "description": "Jude, seventeen and mortal, gets tangled in palace intrigues while trying to win a place in the treacherous High Court of Faerie, where she and her sisters have lived for a decade.",
       "cover": "https://covers.openlibrary.org/b/id/13128236-L.jpg",
       "id": 15
