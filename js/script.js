@@ -28,7 +28,7 @@ const getSearchData = (value) => {
         text.innerText = "Search Results"
 
         //Appending the element in our HTML
-        titleContainer.appendChild(text)
+        resultContainer.appendChild(text)
         
         //Converting our json data from an object to an array
         let arr = Object.entries(value)
@@ -44,12 +44,10 @@ const getSearchData = (value) => {
                 
                 //Assigning the variable result to our filtered data
                 let result = element[1]
-
+                //Displaying search results
                 let results = createElements(result)
-                // let searching = document.createElement("div")
 
-                // titleContainer.appendChild(searching)    
-                // searching.appendChild(results)
+                //Appending the results in the web page
                 resultContainer.appendChild(results)
             }
           
@@ -317,9 +315,9 @@ const createElements = (value) => {
         <input type="text" id="comment" class="form-control" placeholder="Enter Your Comment...">
         <button type="submit">Submit</button>
         
-      </form>`
+         </form>`
 
-      //adding a submit listener to our form
+        //adding a submit listener to our form
         formComment.addEventListener("submit", (event) =>{
             event.preventDefault()
 
