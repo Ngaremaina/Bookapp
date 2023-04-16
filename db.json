@@ -45,9 +45,10 @@
       "quantity": 24,
       "sold": 14,
       "comments": "Fantastic book",
-      "name": "Brian",
+      "name": "Brian ",
       "description": "The war against Voldemort is not going well: even Muggle governments are noticing. Ron scans the obituary pages of The Daily Prophet looking for familiar names. Dumbledore is absent from Hogwarts for long stretches of time, and the Order of the Phoenix has already suffered losses.",
-      "cover": "https://covers.openlibrary.org/b/id/10716324-L.jpg"
+      "cover": "https://covers.openlibrary.org/b/id/10716324-L.jpg",
+      "comment": "Good book"
     },
     {
       "id": 4,
@@ -214,6 +215,36 @@
       "description": "As war surges in the dystopian society around her, sixteen-year-old Divergent Tris Prior must continue trying to save those she loves--and herself--while grappling with haunting questions of grief and forgiveness, identity and loyalty, politics and love",
       "cover": "https://covers.openlibrary.org/b/id/13326735-L.jpg",
       "id": 13
+    },
+    {
+      "title": "The throne of fire",
+      "subtitle": "The throne of fire",
+      "author": "Rick Riordan",
+      "published": "2011",
+      "publisher": "Thorndike Press",
+      "pages": "300",
+      "price": 850,
+      "quantity": 25,
+      "sold": 12,
+      "description": "Ever since the gods of Ancient Egypt were unleashed in the modern world, Carter Kane and his sister Sadie have been in trouble. As descendants of the House of Life, the Kanes have some powers at their command, but the devious gods haven't given them much time to master their skills at Brooklyn House, which has become a training ground for young magicians.  And now their most threatening enemy yet - the chaos snake Apophis - is rising. If they don't prevent him from breaking free in a few days' time, the world will come to an end. In other words, it's a typical week for the Kane family.  To have any chance of battling the Forces of Chaos, the Kanes must revive the sun god Ra. But that would be a feat more powerful than any magician has ever accomplished.  First they have to search the world for the three sections of the Book of Ra, then they have to learn how to chant its spells. Oh, and did we mention that no one knows where Ra is exactly?  Narrated in two different wisecracking voices, featuring a large cast of new and unforgettable characters, and with adventures spanning the globe, this second installment in the Kane Chronicles is nothing short of a thrill ride.",
+      "cover": "https://covers.openlibrary.org/b/id/13012124-L.jpg",
+      "id": 14,
+      "name": "Myner",
+      "comment": "Good book"
+    },
+    {
+      "title": "The Cruel Prince",
+      "subtitle": "The Cruel Prince",
+      "author": "Holly Black",
+      "published": "2018",
+      "publisher": "Little, Brown and Company",
+      "pages": "370",
+      "price": 900,
+      "quantity": 60,
+      "sold": 42,
+      "description": "Jude, seventeen and mortal, gets tangled in palace intrigues while trying to win a place in the treacherous High Court of Faerie, where she and her sisters have lived for a decade.",
+      "cover": "https://covers.openlibrary.org/b/id/13128236-L.jpg",
+      "id": 15
     }
   ]
 }
