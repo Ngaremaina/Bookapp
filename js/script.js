@@ -1,6 +1,8 @@
 //Fetching data from json server
 const fetchData = () => {
-    return fetch("http://localhost:3000/books")
+    /*paste this link in the fetch function to run locally
+    http://localhost:3000/books/*/
+    return fetch("https://book-data.onrender.com/books")
     .then(res => res.json())
     .then(data => {
         //Declaring our functions that will be fetching data from json server
@@ -76,7 +78,9 @@ bookForm.addEventListener("submit", (event) => {
     let cover = document.getElementById("cover").value
 
     //Adding data to the server using POST Method
-    fetch("http://localhost:3000/books/",{
+     /*paste this link in the fetch function to run locally
+    http://localhost:3000/books/*/
+    fetch("https://book-data.onrender.com/books",{
         method: "POST",
         headers: {
             "Content-Type":"application/json",
@@ -234,21 +238,21 @@ const createElements = (value) => {
         //Adding a form to our card that will capture the updated values
         formContainer.innerHTML = `
         <form id="updateBook" class="updateformbook"><br>
-        <label for="title">Book Title</label>
-        <input type="text" id="title" class="form-control" placeholder="Enter the Book Title...">
-        <label for="author">Book Author</label>
-        <input type="text" id="author" class="form-control" placeholder="Enter the Book Author...">
-        <label for="price">Book Price</label>
-        <input type="number" id="price" class="form-control" placeholder="Enter the Book Price...">
-        <label for="quantity">Quantity</label>
-        <input type="number" id="quantity" class="form-control" placeholder="Enter the Number of Available Books to be Sold...">
-        <label for="sold">Books Sold</label>
-        <input type="number" id="sold" class="form-control" placeholder="Enter the Number of Books Sold...">
-        <label for="title">Book Description</label>
-        <input type="text" id="description" class="form-control" placeholder="Enter the Book Description..">
-        <label for="cover">Book Cover</label>
-        <input type="text" id="cover" class="form-control" placeholder="Enter the Book Image Link...">
-        <button type="submit">Submit</button>
+            <label for="title">Book Title</label>
+            <input type="text" id="title" class="form-control" placeholder="Enter the Book Title...">
+            <label for="author">Book Author</label>
+            <input type="text" id="author" class="form-control" placeholder="Enter the Book Author...">
+            <label for="price">Book Price</label>
+            <input type="number" id="price" class="form-control" placeholder="Enter the Book Price...">
+            <label for="quantity">Quantity</label>
+            <input type="number" id="quantity" class="form-control" placeholder="Enter the Number of Available Books to be Sold...">
+            <label for="sold">Books Sold</label>
+            <input type="number" id="sold" class="form-control" placeholder="Enter the Number of Books Sold...">
+            <label for="title">Book Description</label>
+            <input type="text" id="description" class="form-control" placeholder="Enter the Book Description..">
+            <label for="cover">Book Cover</label>
+            <input type="text" id="cover" class="form-control" placeholder="Enter the Book Image Link...">
+            <button type="submit">Submit</button>
       </form>`
 
        //Adding a submit event listener that will update data
@@ -268,7 +272,9 @@ const createElements = (value) => {
             let description = document.getElementById("description").value
             let cover = document.getElementById("cover").value
             //PUT function that will update the book by obtaining the id
-             fetch(`http://localhost:3000/books/${posId}`,{
+             /*paste this link in the fetch function to run locally
+                http://localhost:3000/books/*/
+             fetch(`https://book-data.onrender.com/books/${posId}`,{
                 method:"PUT",
                 headers:{
                     "Content-Type":"application/json"
@@ -309,12 +315,12 @@ const createElements = (value) => {
         //Creating our comment form
         formComment.innerHTML = `
         <form id="commentBook" class="updateformbook"><br>
-        <label for="name">Name</label>
-        <input type="text" id="name" class="form-control" placeholder="Enter Your Name...">
-        <label for="comment">Comment</label>
-        <input type="text" id="comment" class="form-control" placeholder="Enter Your Comment...">
-        <button type="submit">Submit</button>
-        
+            <label for="name">Name</label>
+            <input type="text" id="name" class="form-control" placeholder="Enter Your Name...">
+            <label for="comment">Comment</label>
+            <input type="text" id="comment" class="form-control" placeholder="Enter Your Comment...">
+            <button type="submit">Submit</button>
+            
          </form>`
 
         //adding a submit listener to our form
@@ -326,7 +332,9 @@ const createElements = (value) => {
             let comment = document.getElementById("comment").value
             
             //Updating our book through PATCH method
-             fetch(`http://localhost:3000/books/${posId}`,{
+             /*paste this link in the fetch function to run locally
+                    http://localhost:3000/books/*/
+             fetch(`https://book-data.onrender.com/books/${posId}`,{
                 method:"PATCH",
                 headers:{
                     "Content-Type":"application/json"
@@ -354,7 +362,9 @@ const deleteBook = (id) => {
         },
         
     }
-    fetch(`http://localhost:3000/books/${id}`, options)
+     /*paste this link in the fetch function to run locally
+    http://localhost:3000/books/*/
+    fetch(`https://book-data.onrender.com/books/${id}`, options)
     .then(res => res.json)
 }
 
@@ -368,7 +378,9 @@ const updateTicketNum = (id, value) =>{
         },
         body:JSON.stringify(value)
     }
-    fetch(`http://localhost:3000/books/${id}`, options)
+     /*paste this link in the fetch function to run locally
+    http://localhost:3000/books/*/
+    fetch(`https://book-data.onrender.com/books/${id}`, options)
     .then(res => res.json)
 }
 
