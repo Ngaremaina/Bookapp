@@ -1,5 +1,5 @@
 # Book Application #
-The Book App is a web application that shows the user a collection of books. The user can view a list of their favorite books along with information about them, such the author, summary, price, and publisher, to mention a few. Also, the user can add their own book to the app and view it listed with all the other books. Also, the user has the option to update their own book by adding or deleting any elements they see fit. Also, if a person doesn't want to see the book, they can delete it. The user may also search for their preferred book by its title, such as Harry Potter.
+The Book App is a web application that displays a library of books to the user. The user can see a list of their favorite books, as well as information about them such as the author, summary, price, and publisher, to name a few. In addition, the user can add their own book to the app and see it listed with all of the other books. In addition, the user can update their own book by adding or removing whatever elements they see suitable. In addition, if someone does not want to read the book, they can erase it. The user can also look for a book by its title, such as Harry Potter. 
 
 # Demo #
 The pictures as shown depict the outlook of the web app
